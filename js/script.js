@@ -23,3 +23,7 @@ const gameBoard = (() => {
     
     return {board, layOutGameBoard, player1Turn, player2Turn, winnerText};
 })(); 
+
+const playerFactory = (name, symbol) => {
+    return {name, symbol};
+};
