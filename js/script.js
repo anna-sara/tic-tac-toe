@@ -27,3 +27,22 @@ const gameBoard = (() => {
 const playerFactory = (name, symbol) => {
     return {name, symbol};
 };
+
+const startGame = (() => {
+    
+    gameBoard.layOutGameBoard();
+    const board = gameBoard.board;
+    const player1 = playerFactory('You', 'X');
+    const player2 = playerFactory('Computer' , 'O');
+    let currentPlayer = player1;
+    let cells = document.querySelectorAll('.cell');
+    let winnerText = gameBoard.winnerText;
+    let gameOver = true;
+    
+    
+    let newGameAginstFriendBtn = document.querySelector('.againstFriendBtn');
+    newGameAginstFriendBtn.addEventListener('click', startGame);
+
+    
+    return {gameOver,player1, player2, currentPlayer};
+})(); 
