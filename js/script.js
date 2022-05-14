@@ -43,6 +43,47 @@ const startGame = (() => {
     let newGameAginstFriendBtn = document.querySelector('.againstFriendBtn');
     newGameAginstFriendBtn.addEventListener('click', startGame);
 
+    function startGame(e) {
+        gameOver = true;
+        const playAgainstFriendForm = document.querySelector('.playAgainstFriendForm');
+
+        playAgainstFriendForm.style.display = 'flex';
+
+        let startBtn = document.querySelector('.startGameFriendBtn');
+        startBtn.addEventListener('click', getPlayersName);
+       
+        function getPlayersName(e) {
+
+                let name2 = e.target.previousElementSibling;
+                name2.value === "" ? player2.name = 'Player 2': player2.name = name2.value;
+                gameBoard.player2Turn.textContent = `${ player2.symbol} ${player2.name}`;
+
+                let name1 = name2.previousElementSibling;
+                name1.value === "" ? player1.name = 'Player 1': player1.name = name1.value;
+                gameBoard.player1Turn.textContent = `${ player1.symbol} ${player1.name}`
+
+                gameBoard.player1Turn.style.borderBottom = '3px solid #fb9f8b';
+
+                playAgainstFriendForm.style.display = 'none';
+                
+                restart();   
+                playGame();
+        }
+    }
+
+    function restart() {
+        board.fill('');
+
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.style.color = '';
+            cell.style.fontWeight = '200'
+        })
+
+        gameBoard.player2Turn.style.borderBottom = 'none';
+        winnerText.textContent = "";
+        currentPlayer = player1;
+    }
     
     return {gameOver,player1, player2, currentPlayer};
 })(); 
