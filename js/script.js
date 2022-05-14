@@ -101,5 +101,44 @@ const playGame = () => {
     let cells = document.querySelectorAll('.cell');
     cells.forEach(cell => cell.addEventListener('click', targetCell));
 
+    function targetCell(e) {
+        const cell= e.target;
+
+        if(gameOver == false) {
+            if(!board[cell.id]) {
+                board[cell.id] = currentPlayer.symbol;
+                cell.textContent = currentPlayer.symbol
+            
+                if(board.every(cell => cell !== "") && playerHasWon() == false ) { 
+                    gameBoard.winnerText.textContent = `It's a tie!`;
+                    gameOver = true;
+        
+                }
+        
+                if(playerHasWon() !== false ){
+                    gameBoard.winnerText.textContent = `${currentPlayer.name} has won`;
+                    let winningCells = playerHasWon();
+                    console.log(winningCells);
+                    winningCells.map(cell => cells[cell].style.color = '#fb9f8b');
+                    winningCells.map(cell => cells[cell].style.fontWeight = '400');
+                    gameOver = true;
+                }
+
+                currentPlayer = currentPlayer == player1 ? player2 : player1; 
+
+                if (currentPlayer == player1 ) {
+                    gameBoard.player2Turn.style.borderBottom = 'none',
+                    gameBoard.player1Turn.style.borderBottom = '3px solid #fb9f8b'; 
+                } else {
+                    gameBoard.player1Turn.style.borderBottom = 'none',
+                    gameBoard.player2Turn.style.borderBottom = '3px solid #fb9f8b'; 
+                }
+                           
+            }
+        } 
+        
+    }
+    
+
     
 };
