@@ -87,3 +87,19 @@ const startGame = (() => {
     
     return {gameOver,player1, player2, currentPlayer};
 })(); 
+
+const playGame = () => {
+    
+    const board = gameBoard.board;
+    const player1 = startGame.player1;
+    const player2 = startGame.player2;
+    let currentPlayer = startGame.currentPlayer;
+    let gameOver = startGame.gameOver;
+    gameOver = false;
+    
+
+    let cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => cell.addEventListener('click', targetCell));
+
+    
+};
