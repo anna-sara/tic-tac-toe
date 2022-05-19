@@ -7,6 +7,7 @@ With this game I wanted to practice using different design patterns in JavaScrip
 - HTML
 - CSS
 
+## Video
 
 https://user-images.githubusercontent.com/42702138/168607507-d9703599-2117-4e81-8695-12eba87ab617.mp4
 
